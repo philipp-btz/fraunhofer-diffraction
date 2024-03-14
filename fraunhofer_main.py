@@ -9,15 +9,15 @@ import datetime
 import gmpy2 as gm
 
 
-p = 20         #   number of elemental wave samples taken from slit
-q = 0.01       #   step size on projection Plane [m]
-r = 30          #   calculation border. max allowed distance [m] off center
-t = 60           #   amount of samples in time for intensity on plane
+p = 400         #   number of elemental wave samples taken from slit
+q = 0.005       #   step size on projection Plane [m]
+r = 2          #   calculation border. max allowed distance [m] off center
+t = 600           #   amount of samples in time for intensity on plane
 
 
 
 a = 16           #   distance [m] slit <--> projection plane
-b = 1        #   width [m] of slit 
+b = 0.5        #   width [m] of slit 
 d = 0           #   distance off center projection plane
 l = 0.05           #   wavelenghth of wave | in m
 c = 3000  #   Speed of wave in m/s
@@ -59,13 +59,16 @@ class Fresnel:
                 sublist_int_values.append(intensity)
             list_int_values.append(sum(sublist_int_values))
         intensity_at_point = max(list_int_values)
+        self.latest_intensity = intensity_at_point
         return intensity_at_point
 
     def screen(self):
         self.plotlib = {}
+        a_calculation_points = m.ceil(self.calculation_border/self.stepsize_projectionplane)
         for d in range(0, m.ceil(self.calculation_border/self.stepsize_projectionplane)):
             self.distance(d)
             intensity_at_d = self.intensity_at_point()
+            print("Intensity at point "+str(d)+"/" + str(a_calculation_points) + " with intensity " + str(self.latest_intensity))
             self.plotlib.update({d*self.stepsize_projectionplane : intensity_at_d})
         return self.plotlib
     
