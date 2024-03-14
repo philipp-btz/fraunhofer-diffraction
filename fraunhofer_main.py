@@ -9,7 +9,7 @@ import datetime
 import gmpy2 as gm
 
 
-p = 400         #   number of elemental wave samples taken from slit
+p = 300         #   number of elemental wave samples taken from slit
 q = 0.005       #   step size on projection Plane [m]
 r = 2          #   calculation border. max allowed distance [m] off center
 t = 600           #   amount of samples in time for intensity on plane
