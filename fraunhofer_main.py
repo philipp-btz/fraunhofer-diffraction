@@ -10,9 +10,9 @@ import gmpy2 as gm
 
 
 p = 300         #   number of elemental wave samples taken from slit
-q = 0.001       #   step size on projection Plane [m]
-r = 2          #   calculation border. max allowed distance [m] off center
-t = 600           #   amount of samples in time for intensity on plane
+q = 0.0005       #   step size on projection Plane [m]
+r = 1          #   calculation border. max allowed distance [m] off center
+t = 300           #   amount of samples in time for intensity on plane
 
 
 
